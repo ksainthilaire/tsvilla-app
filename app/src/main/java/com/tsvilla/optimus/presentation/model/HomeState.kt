@@ -1,5 +1,5 @@
 package com.tsvilla.optimus.presentation.model
 
-class HomeState  : BaseState() {
-
-}
+data class HomeState(
+    val isSuccessfulConnected: Boolean = false
+) : BaseState()
