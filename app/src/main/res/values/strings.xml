@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">tsvilla</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--- API Configuration -->
     <string name="api_tsvilla_secret">ciaoTommaso</string>
     <string name="api_tsvilla_base_url">http://heartbeatart.hopto.org:8080</string>
+
+    <!-- Home fragment -->
+    <string name="home_title">PS Villa</string>
+    <string name="home_description">Stream your BPM live</string>
+    <string name="home_button_start">Start</string>
+
+    <!-- Monitoring fragment -->
+    <string name="monitor_low_battery">Please note that you only have 5% battery left.</string>
+
+    <!-- Fragment to replay a recording -->
+    <string name="replay_title">Replay</string>
+    <string name="replay_description">Replay old live recording</string>
 </resources>
