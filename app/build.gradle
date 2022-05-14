@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -32,6 +34,49 @@ android {
 }
 
 dependencies {
+
+    // Gson
+    implementation("com.google.code.gson:gson:2.9.0")
+
+    // converter-gson
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // RxJava2 support for Room
+    implementation("androidx.room:room-rxjava2:_")
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:_")
+
+    // Koin Core features
+    implementation "io.insert-koin:koin-core:_"
+
+    // Koin main features for Android
+    implementation "io.insert-koin:koin-android:_"
+
+    // OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    // RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+
+    // RxJava2CallAdapterFactory
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+
+    // RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+
+    // Navigation Android Jetpack
+    implementation "androidx.navigation:navigation-fragment-ktx:_"
+    implementation "androidx.navigation:navigation-ui-ktx:_"
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
