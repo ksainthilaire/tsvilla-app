@@ -1,5 +1,6 @@
 package com.tsvilla.optimus.data.repositories
 
+import android.content.res.Resources
 import android.util.Log
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.data.services.TsvillaApi
@@ -12,15 +13,17 @@ import org.koin.java.KoinJavaComponent.inject
 class TsvillaRepository : ITsvillaRepository {
 
     private val tsvillaApi: TsvillaApi by inject(TsvillaApi::class.java)
-    private val token: String = ""
+    private val resources: Resources by inject(Resources::class.java)
+    private val token: String = resources.getString(R.string.api_tsvilla_secret)
 
     companion object {
         private const val TAG = "TsvillaRepository"
     }
 
-    override fun sendBPM(bpm: Int): Maybe<Boolean> = Maybe.create { emitter ->
+    /*
+    override fun sendBPM(bpm: Int): Flowable<Boolean> = Flowa.create { emitter ->
         tsvillaApi.sendBPM(token, bpm)
         //    .subscribe(emitter::onNext)
-    }
-
+       }
+    */
 }
