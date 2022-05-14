@@ -1,4 +1,10 @@
 package com.tsvilla.optimus.di
+import org.koin.dsl.module
 
-class RepositoryModule {
+val repositoryModule = module {
+
+    single {
+//        NewsRepository()
+    }
+
 }
