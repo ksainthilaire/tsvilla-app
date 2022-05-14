@@ -1,11 +1,12 @@
-package com.tsvilla.optimus
+package com.tsvilla.optimus.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tsvilla.optimus.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mains)
+        setContentView(R.layout.activity_main)
     }
 }
