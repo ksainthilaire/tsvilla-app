@@ -6,13 +6,13 @@ import com.tsvilla.optimus.presentation.model.MonitorState
 import com.tsvilla.optimus.presentation.viewmodel.MonitorViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MonitorFragment :
+class HomeFragment :
     BaseFragment<
             MonitorState,
             MonitorViewModel,
-            FragmentMonitorBinding>(R.layout.fragment_monitor) {
+            FragmentHomeBinding>(R.layout.fragment_home) {
 
 
-    override val viewModel: MonitorViewModel by viewModel()
+    override val viewModel: HomeViewModel by viewModel()
 
 }

@@ -1,4 +1,6 @@
 package com.tsvilla.optimus.presentation.viewmodel
 
-class BaseViewModel {
+import androidx.lifecycle.ViewModel
+
+open class BaseViewModel : ViewModel() {
 }

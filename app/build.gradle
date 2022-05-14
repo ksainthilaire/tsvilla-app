@@ -8,6 +8,10 @@ plugins {
 android {
     compileSdk 32
 
+    buildFeatures {
+        dataBinding true
+    }
+
     defaultConfig {
         applicationId "com.tsvilla.optimus"
         minSdk 21

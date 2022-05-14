@@ -9,6 +9,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.tsvilla.optimus.presentation.model.BaseState
+import com.tsvilla.optimus.presentation.viewmodel.BaseViewModel
 import fr.airweb.news.presentation.model.BaseState
 import fr.airweb.news.presentation.utils.LifecycleChecker
 import fr.airweb.news.presentation.viewmodel.BaseViewModel
@@ -47,7 +49,7 @@ abstract class BaseFragment<
         val disposable = viewModel.state.
         subscribe(::updateView)
 
-        viewLifecycleOwner.lifecycle.addObserver(LifecycleChecker(disposable))
+        //viewLifecycleOwner.lifecycle.addObserver(LifecycleChecker(disposable))
     }
 
 }}

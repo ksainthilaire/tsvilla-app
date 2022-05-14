@@ -1,4 +1,5 @@
 package com.tsvilla.optimus.presentation.viewmodel
 
-class SettingsViewModel : BaseViewModel() {
+class HomeViewModel : BaseViewModel() {
+
 }

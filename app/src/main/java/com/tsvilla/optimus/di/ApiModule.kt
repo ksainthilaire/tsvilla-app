@@ -2,6 +2,7 @@ package com.tsvilla.optimus.di
 
 import android.content.res.Resources
 import com.tsvilla.optimus.R
+import com.tsvilla.optimus.data.services.TsvillaApi
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -31,7 +32,7 @@ val apiModule = module {
     single<Retrofit> {
         val httpClient = get<OkHttpClient>()
         val resources = get<Resources>()
-     //   val baseUrl = resources.getString(R.string)
+     val baseUrl = resources.getString(R.string.api_tsvilla_base_url)
 
         Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -41,7 +42,7 @@ val apiModule = module {
             .build()
     }
 
-    single<NewsApi> {
-        get<Retrofit>().create(NewsApi::class.java)
+    single<TsvillaApi> {
+        get<Retrofit>().create(TsvillaApi::class.java)
     }
 }
