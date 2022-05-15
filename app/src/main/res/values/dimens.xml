@@ -3,4 +3,7 @@
     <dimen name="h1">35dp</dimen>
     <dimen name="h2">50dp</dimen>
     <dimen name="p">30dp</dimen>
+
+    <dimen name="monitor_bpm">60dp</dimen>
+    <dimen name="monitor_live_stat">20dp</dimen>
 </resources>

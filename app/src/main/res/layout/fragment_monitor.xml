@@ -22,36 +22,71 @@
                 android:textSize="@dimen/h2" />
         </LinearLayout>
 
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:background="@drawable/circle_monitor"
+            android:padding="50dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/monitor_bpm"
+                    android:textColor="@color/pale_lavender"
+                    android:text="70" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/monitor_low_battery"></TextView>
+                android:text="live stat here"
+                android:textColor="@color/pale_lavender"
+                android:textSize="@dimen/monitor_live_stat"/>
+
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <include
+                android:id="@+id/alert"
+                layout="@layout/alert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/btn_recordings"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <ImageButton
                 android:id="@+id/btn_play"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <ImageButton
                 android:id="@+id/btn_stop"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

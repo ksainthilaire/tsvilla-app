@@ -3,28 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_home"
         android:name="com.tsvilla.optimus.presentation.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_monitorFragment"
-            app:destination="@id/monitorFragment" />
+            app:destination="@id/nav_monitor" />
     </fragment>
     <fragment
-        android:id="@+id/monitorFragment"
+        android:id="@+id/nav_monitor"
         android:name="com.tsvilla.optimus.presentation.fragment.MonitorFragment"
         android:label="fragment_monitor"
         tools:layout="@layout/fragment_monitor" >
         <action
             android:id="@+id/action_monitorFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
+        android:id="@+id/nav_settings"
         android:name="com.tsvilla.optimus.presentation.fragment.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />

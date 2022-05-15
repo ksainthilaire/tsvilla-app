@@ -20,11 +20,11 @@ class MonitorFragment :
 
 
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 
     override fun updateView(state: MonitorState) {
-        TODO("Not yet implemented")
+
     }
 
 }

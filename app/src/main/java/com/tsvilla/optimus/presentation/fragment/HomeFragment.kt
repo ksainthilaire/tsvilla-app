@@ -18,7 +18,9 @@ class HomeFragment :
     override val viewModel: HomeViewModel by viewModel()
 
     override fun initView() {
-        Toast.makeText(requireContext(), "Hello World", Toast.LENGTH_SHORT).show()
+        binding.btnStart.setOnClickListener {
+            navController.navigate(R.id.nav_monitor)
+        }
     }
 
     override fun updateView(state: HomeState) {
