@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.tsvilla.optimus.R
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity(),
         activityContext = this
         setContentView(R.layout.activity_main)
         setupNavigation()
+        Toast.makeText(applicationContext, "Hello World", Toast.LENGTH_SHORT).show()
     }
 
     private fun setupNavigation() {

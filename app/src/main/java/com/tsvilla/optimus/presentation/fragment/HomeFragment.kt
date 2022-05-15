@@ -1,6 +1,7 @@
 package com.tsvilla.optimus.presentation.fragment
 
 
+import android.widget.Toast
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.databinding.FragmentHomeBinding
 import com.tsvilla.optimus.presentation.model.HomeState
@@ -17,11 +18,11 @@ class HomeFragment :
     override val viewModel: HomeViewModel by viewModel()
 
     override fun initView() {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(), "Hello World", Toast.LENGTH_SHORT).show()
     }
 
     override fun updateView(state: HomeState) {
-        TODO("Not yet implemented")
+
     }
 
 }
