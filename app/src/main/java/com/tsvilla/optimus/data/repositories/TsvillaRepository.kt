@@ -20,10 +20,9 @@ class TsvillaRepository : ITsvillaRepository {
         private const val TAG = "TsvillaRepository"
     }
 
-    /*
-    override fun sendBPM(bpm: Int): Flowable<Boolean> = Flowa.create { emitter ->
+
+    override fun sendBPM(bpm: Int): Flowable<Boolean> = Flowable.create({ emitter ->
         tsvillaApi.sendBPM(token, bpm)
-        //    .subscribe(emitter::onNext)
-       }
-    */
+            .subscribe(emitter::onNext)
+       }, BackpressureStrategy.BUFFER)
 }

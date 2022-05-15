@@ -16,4 +16,12 @@ class HomeFragment :
 
     override val viewModel: HomeViewModel by viewModel()
 
+    override fun initView() {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateView(state: HomeState) {
+        TODO("Not yet implemented")
+    }
+
 }

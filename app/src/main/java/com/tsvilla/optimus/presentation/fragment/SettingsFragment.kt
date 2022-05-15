@@ -3,6 +3,7 @@ package com.tsvilla.optimus.presentation.fragment
 
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.databinding.FragmentSettingsBinding
+import com.tsvilla.optimus.presentation.model.HomeState
 import com.tsvilla.optimus.presentation.model.SettingsState
 import com.tsvilla.optimus.presentation.viewmodel.SettingsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,6 +17,14 @@ class SettingsFragment :
 
     override val viewModel: SettingsViewModel by viewModel()
 
+
+    override fun initView() {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateView(state: SettingsState) {
+        TODO("Not yet implemented")
+    }
 
 
 }
