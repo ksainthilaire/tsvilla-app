@@ -4,5 +4,5 @@ import io.reactivex.Flowable
 import io.reactivex.Maybe
 
 interface ITsvillaRepository {
-    fun sendBPM(bpm: Int): Flowable<Boolean>
+    fun sendBPM(bpm: Int): Flowable<String>
 }

@@ -3,6 +3,7 @@ package com.tsvilla.optimus.data.repositories
 import android.content.res.Resources
 import android.util.Log
 import com.tsvilla.optimus.R
+import com.tsvilla.optimus.data.model.SendBPMRequest
 import com.tsvilla.optimus.data.services.TsvillaApi
 import com.tsvilla.optimus.domain.ITsvillaRepository
 import io.reactivex.BackpressureStrategy
@@ -21,8 +22,10 @@ class TsvillaRepository : ITsvillaRepository {
     }
 
 
-    override fun sendBPM(bpm: Int): Flowable<Boolean> = Flowable.create({ emitter ->
-        tsvillaApi.sendBPM(token, bpm)
-            .subscribe(emitter::onNext)
+    override fun sendBPM(bpm: Int): Flowable<String> = Flowable.create({ emitter ->
+        tsvillaApi.sendBPM(SendBPMRequest(token, bpm))
+            .subscribe({ emitter.onNext(it) }, { tr ->
+                Log.e(TAG, "Error while send BPM", tr)
+            })
        }, BackpressureStrategy.BUFFER)
 }

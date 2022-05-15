@@ -24,7 +24,9 @@ class MonitorFragment :
     }
 
     override fun updateView(state: MonitorState) {
-
+        with (binding) {
+            bpm.text = state.currentBPM.toString()
+        }
     }
 
 }

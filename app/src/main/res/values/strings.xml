@@ -3,7 +3,7 @@
 
     <!--- API Configuration -->
     <string name="api_tsvilla_secret">ciaoTommaso</string>
-    <string name="api_tsvilla_base_url">http://heartbeatart.hopto.org:8080</string>
+    <string name="api_tsvilla_base_url">https://heartbeatserver-heartbeat1.pitunnel.com</string>
 
     <!-- Home fragment -->
     <string name="home_title">PS Villa</string>
