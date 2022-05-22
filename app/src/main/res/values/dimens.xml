@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="h1">35dp</dimen>
+    <dimen name="h1">25dp</dimen>
     <dimen name="h2">50dp</dimen>
     <dimen name="p">30dp</dimen>
 
-    <dimen name="monitor_bpm">60dp</dimen>
+    <dimen name="monitor_bpm">40dp</dimen>
     <dimen name="monitor_live_stat">20dp</dimen>
+
+    <dimen name="box_inset_layout_padding">0dp</dimen>
+    <dimen name="inner_frame_layout_padding">5dp</dimen>
+
+    <dimen name="width_btn_default">90dp</dimen>
 </resources>

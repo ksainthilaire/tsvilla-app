@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/drawable/alert_error.xml" value="0.146" />
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/drawable/alert_info.xml" value="0.146" />
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/drawable/alert_success.xml" value="0.146" />
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/drawable/circle_monitor.xml" value="0.146" />
         <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/fragment_monitor.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/alert.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/fragment_home.xml" value="0.7478632478632479" />
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/fragment_monitor.xml" value="0.67" />
         <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/fragment_settings.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/keny_airweb/AndroidStudioProjects/tsvilla/app/src/main/res/layout/main_settings.xml" value="0.49538461538461537" />
       </map>
     </option>
   </component>

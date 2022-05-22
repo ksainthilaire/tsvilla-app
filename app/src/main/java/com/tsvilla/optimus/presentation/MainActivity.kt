@@ -1,29 +1,49 @@
 package com.tsvilla.optimus.presentation
 
+
 import android.content.Context
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.tsvilla.optimus.R
 import com.google.android.gms.wearable.*
+import com.tsvilla.optimus.R
+import com.tsvilla.optimus.databinding.ActivityMainBinding
+import com.tsvilla.optimus.utils.changeMode
+import com.tsvilla.optimus.utils.getCurrentMode
+
 
 class MainActivity : AppCompatActivity(),
     DataClient.OnDataChangedListener,
     MessageClient.OnMessageReceivedListener,
     CapabilityClient.OnCapabilityChangedListener {
 
+    private var isActionTypeUp: Boolean = true
+    private var touchStartPointY: Float = 0f
+
+
     private var activityContext: Context? = null
+    private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityContext = this
-        setContentView(R.layout.activity_main)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        initView()
         setupNavigation()
-        Toast.makeText(applicationContext, "Hello World", Toast.LENGTH_SHORT).show()
+    }
+
+
+
+    private fun initView() {
+
     }
 
     private fun setupNavigation() {
@@ -43,7 +63,6 @@ class MainActivity : AppCompatActivity(),
             e.printStackTrace()
         }
     }
-
 
 
     override fun onDataChanged(p0: DataEventBuffer) {

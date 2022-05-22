@@ -18,6 +18,20 @@ class HomeFragment :
     override val viewModel: HomeViewModel by viewModel()
 
     override fun initView() {
+
+        with( binding.btnStart) {
+            alpha = 0f
+            translationY = 50F
+
+            animate()
+                .alpha(1f)
+                .translationYBy(-50f)
+                .setDuration(1000)
+        }
+
+
+
+
         binding.btnStart.setOnClickListener {
             navController.navigate(R.id.nav_monitor)
         }

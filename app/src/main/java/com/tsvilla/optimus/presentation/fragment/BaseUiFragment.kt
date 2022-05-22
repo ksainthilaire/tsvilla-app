@@ -1,9 +1,7 @@
 package com.tsvilla.optimus.presentation.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -16,7 +14,7 @@ import com.tsvilla.optimus.presentation.viewmodel.BaseViewModel
 abstract class BaseFragment<
         State : BaseState,
         ViewModel: BaseViewModel<State>,
-        ViewBinding: ViewDataBinding>(private val layoutId: Int) : Fragment() {
+        ViewBinding: ViewDataBinding>(private val layoutId: Int) : Fragment(),  View.OnTouchListener {
 
     protected val navController: NavController by lazy {
         findNavController()
@@ -31,6 +29,7 @@ abstract class BaseFragment<
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        binding.root.setOnTouchListener(this)
 
         initViewModel()
         initView()
@@ -47,6 +46,11 @@ abstract class BaseFragment<
         subscribe(::updateView)
 
         viewLifecycleOwner.lifecycle.addObserver(LifecycleChecker(disposable))
+    }
+
+    override fun onTouch(view: View?, event: MotionEvent): Boolean {
+        activity?.onTouchEvent(event)
+        return true
     }
 
 }

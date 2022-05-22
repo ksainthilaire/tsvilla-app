@@ -1,5 +1,9 @@
 package com.tsvilla.optimus.di
 
+import android.content.Context
+import android.content.Context.SENSOR_SERVICE
+import android.hardware.SensorManager
+import androidx.core.content.ContextCompat.getSystemService
 import com.tsvilla.optimus.presentation.viewmodel.HomeViewModel
 import com.tsvilla.optimus.presentation.viewmodel.MonitorViewModel
 import com.tsvilla.optimus.presentation.viewmodel.SettingsViewModel
@@ -16,6 +20,12 @@ val presentationModule = module {
 
     single {
         androidContext().resources
+    }
+
+    single {
+        val context = androidContext().applicationContext
+        val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensorManager
     }
 
 
