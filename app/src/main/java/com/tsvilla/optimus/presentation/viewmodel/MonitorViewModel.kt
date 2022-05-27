@@ -28,25 +28,30 @@ class MonitorViewModel : SensorEventListener, BaseViewModel<MonitorState> (
     private val repository: ITsvillaRepository by inject(TsvillaRepository::class.java)
     private val sensorManager: SensorManager by inject(SensorManager::class.java)
 
+    private val timeMillis: Long = 500 // Desired delay between events in microseconds
+
     init {
-        initSensor()
+        generateAndSendRandomBpm()
+        //initSensor()
     }
 
     private fun initSensor() {
         val heartSensor = sensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE)
-        sensorManager.registerListener(this, heartSensor, SensorManager.SENSOR_DELAY_NORMAL)
+        sensorManager.registerListener(this, heartSensor, timeMillis.toInt())
     }
-    /*
+
+
     private fun generateAndSendRandomBpm() {
         CoroutineScope(IO).launch {
-            delay(1000)
+            delay(timeMillis)
             CoroutineScope(Main).launch {
                 val bpm = (0..100).random()
-                sendBpm(bpm)
+                val state = MonitorState(currentBPM=bpm)
+                _state.onNext(state)
                 generateAndSendRandomBpm()
             }
         }
-    }*/
+    }
 
     private fun sendBpm(bpm: Int) {
         repository.sendBPM(bpm)
@@ -61,8 +66,10 @@ class MonitorViewModel : SensorEventListener, BaseViewModel<MonitorState> (
     override fun onSensorChanged(event: SensorEvent) {
         when(event.sensor.type) {
             Sensor.TYPE_HEART_RATE -> {
-                val bpm = event.values[0]
-                sendBpm(bpm.toInt())
+                val bpm = event.values[0].toInt()
+                val state = MonitorState(currentBPM=bpm)
+                _state.onNext(state)
+           //     sendBpm(bpm.toInt())
             }
         }
     }

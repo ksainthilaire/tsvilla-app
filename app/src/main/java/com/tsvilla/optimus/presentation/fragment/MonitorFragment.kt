@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import androidx.core.content.ContextCompat.getColor
+import androidx.navigation.fragment.findNavController
 import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
@@ -53,6 +55,10 @@ class MonitorFragment :
         viewport.setMaxY(100.0)
         viewport.isScrollable = true
 
+        binding.settings.setOnClickListener {
+            findNavController().navigate(R.id.nav_settings)
+        }
+
     }
 
     private fun showBpm(bpm: Double) {
@@ -61,7 +67,7 @@ class MonitorFragment :
 
         val point = DataPoint(currentPosX, bpm)
         series.appendData(point, true, 10)
-        series.color = Color.RED
+        series.color = getColor(requireContext(), R.color.red)
         binding.graph.onDataChanged(true, true)
     }
 

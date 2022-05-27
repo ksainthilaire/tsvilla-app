@@ -45,6 +45,7 @@
 
             <Button
                 android:id="@+id/btn_start"
+                android:layout_marginTop="40dp"
                 android:layout_width="@dimen/width_btn_default"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/dark_lilac"
