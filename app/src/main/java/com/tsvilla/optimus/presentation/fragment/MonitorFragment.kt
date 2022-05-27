@@ -2,10 +2,15 @@ package com.tsvilla.optimus.presentation.fragment
 
 
 import android.graphics.Color
+import android.opengl.Visibility
+import android.view.View
+import android.view.View.GONE
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint
@@ -26,12 +31,13 @@ class MonitorFragment :
     override val viewModel: MonitorViewModel by viewModel()
 
     private lateinit var series: LineGraphSeries<DataPoint>
+    private lateinit var animation: AlphaAnimation
     private var currentPosX: Double = 0.0
 
     override fun initView() {
 
-        val animation = AlphaAnimation(0.5f, 0f)
-        with (animation) {
+        animation = AlphaAnimation(0.5f, 0f)
+        with(animation) {
             duration = 500
             interpolator = LinearInterpolator()
             repeatCount = Animation.INFINITE
@@ -55,6 +61,10 @@ class MonitorFragment :
         viewport.setMaxY(100.0)
         viewport.isScrollable = true
 
+        binding.stop.setOnClickListener {
+            viewModel.switchSending()
+        }
+
         binding.settings.setOnClickListener {
             findNavController().navigate(R.id.nav_settings)
         }
@@ -73,6 +83,15 @@ class MonitorFragment :
 
     override fun updateView(state: MonitorState) {
         with(binding) {
+            if (state.isPaused) {
+                heart.clearAnimation()
+                binding.stop.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_play)
+            } else {
+                heart.startAnimation(animation)
+                binding.stop.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_stop)
+            }
             bpm.text = state.currentBPM.toString()
             if (state.currentBPM < 60) {
                 showBpm(60.0)
@@ -82,6 +101,12 @@ class MonitorFragment :
                 showBpm(state.currentBPM.toDouble())
             }
         }
+    }
+
+
+    override fun onDestroy() {
+        requireActivity().viewModelStore.clear()
+        super.onDestroy()
     }
 
 }

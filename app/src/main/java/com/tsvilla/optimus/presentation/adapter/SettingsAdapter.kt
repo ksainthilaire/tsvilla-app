@@ -1,23 +1,16 @@
 package com.tsvilla.optimus.presentation.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Switch
+import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.domain.model.Setting
 import com.tsvilla.optimus.domain.model.SettingType
 
-sealed class SettingUI {
-
-    class Toggle(value: Boolean = false) : SettingUI()
-    object Button : SettingUI()
-}
 
 class SettingsAdapter(
     private var settings: List<Setting>,
@@ -28,10 +21,10 @@ class SettingsAdapter(
         View.OnClickListener {
 
         val btn: Button = view.findViewById(R.id.btn)
-        val switch: Switch = view.findViewById(R.id.switch_view)
+        val switch: SwitchCompat = view.findViewById(R.id.switch_view)
 
         init {
-            view.setOnClickListener(this)
+            switch.setOnClickListener(this)
         }
 
         override fun onClick(v: View) {
@@ -62,11 +55,6 @@ class SettingsAdapter(
                 }
             }
         }
-    }
-
-    fun updateSettings(newSettings: List<Setting>) {
-        settings = newSettings
-        notifyDataSetChanged()
     }
 
     override fun getItemCount() = settings.size

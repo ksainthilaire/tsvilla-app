@@ -17,4 +17,6 @@ abstract class BaseViewModel<State : BaseState>(defaultState: State) : ViewModel
     val state: Observable<State>
         get() = _state
 
+
+
 }

@@ -6,6 +6,7 @@ import io.reactivex.disposables.Disposable
 
 class LifecycleChecker(private val disposable: Disposable) : DefaultLifecycleObserver {
 
+
     override fun onDestroy(owner: LifecycleOwner) {
         disposable.dispose()
         super.onDestroy(owner)

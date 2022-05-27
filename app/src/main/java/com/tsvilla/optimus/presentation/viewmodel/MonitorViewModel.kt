@@ -9,9 +9,11 @@ import android.hardware.SensorManager
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.lifecycle.viewModelScope
 import com.tsvilla.optimus.data.repositories.TsvillaRepository
 import com.tsvilla.optimus.domain.ITsvillaRepository
 import com.tsvilla.optimus.presentation.model.MonitorState
+import com.tsvilla.optimus.presentation.utils.LifecycleChecker
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
@@ -22,8 +24,8 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.koin.androidContext
 import org.koin.java.KoinJavaComponent.inject
 
-class MonitorViewModel : SensorEventListener, BaseViewModel<MonitorState> (
-    MonitorState()
+class MonitorViewModel : SensorEventListener, BaseViewModel<MonitorState>(
+    MonitorState(isPaused = false)
 ) {
     private val repository: ITsvillaRepository by inject(TsvillaRepository::class.java)
     private val sensorManager: SensorManager by inject(SensorManager::class.java)
@@ -42,34 +44,53 @@ class MonitorViewModel : SensorEventListener, BaseViewModel<MonitorState> (
 
 
     private fun generateAndSendRandomBpm() {
-        CoroutineScope(IO).launch {
+        viewModelScope.launch {
+
             delay(timeMillis)
-            CoroutineScope(Main).launch {
-                val bpm = (0..100).random()
-                val state = MonitorState(currentBPM=bpm)
-                _state.onNext(state)
+            Log.d("TAG", "test ${isPaused()}")
+
+            viewModelScope.launch {
+                if (!isPaused()) {
+                    val bpm = (0..100).random()
+
+                    val state = MonitorState(currentBPM = bpm, isPaused = isPaused())
+
+                    _state.onNext(state)
+                }
                 generateAndSendRandomBpm()
             }
         }
     }
 
+    fun isPaused(): Boolean = if (_state.value != null) _state.value!!.isPaused else false
+    fun currentBPM(): Int = if (_state.value != null) _state.value!!.currentBPM else 0
+
+    fun switchSending() {
+        Log.d("TAG", "state ${_state.value.toString()}")
+        val state = MonitorState(currentBPM = currentBPM(), isPaused = !isPaused())
+
+        _state.onNext(state)
+    }
+
+
     private fun sendBpm(bpm: Int) {
-        repository.sendBPM(bpm)
+        val disposable = repository.sendBPM(bpm)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { _ ->
-                val state = MonitorState(currentBPM=bpm)
+                val state = MonitorState(currentBPM = bpm)
                 _state.onNext(state)
             }
     }
 
     override fun onSensorChanged(event: SensorEvent) {
-        when(event.sensor.type) {
+        when (event.sensor.type) {
             Sensor.TYPE_HEART_RATE -> {
+                if (isPaused()) return;
                 val bpm = event.values[0].toInt()
-                val state = MonitorState(currentBPM=bpm)
+                val state = MonitorState(currentBPM = bpm)
                 _state.onNext(state)
-           //     sendBpm(bpm.toInt())
+                //     sendBpm(bpm.toInt())
             }
         }
     }

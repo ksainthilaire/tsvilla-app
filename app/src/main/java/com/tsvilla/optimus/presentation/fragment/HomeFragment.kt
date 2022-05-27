@@ -1,7 +1,6 @@
 package com.tsvilla.optimus.presentation.fragment
 
 
-import android.widget.Toast
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.databinding.FragmentHomeBinding
 import com.tsvilla.optimus.presentation.model.HomeState

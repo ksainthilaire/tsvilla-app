@@ -2,7 +2,6 @@ package com.tsvilla.optimus.presentation.viewmodel
 
 import com.tsvilla.optimus.data.repositories.TsvillaRepository
 import com.tsvilla.optimus.domain.ITsvillaRepository
-import com.tsvilla.optimus.presentation.model.MonitorState
 import com.tsvilla.optimus.presentation.model.SettingsState
 import org.koin.java.KoinJavaComponent.inject
 

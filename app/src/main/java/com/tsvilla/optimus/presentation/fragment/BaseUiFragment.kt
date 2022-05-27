@@ -1,6 +1,7 @@
 package com.tsvilla.optimus.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -13,15 +14,23 @@ import com.tsvilla.optimus.presentation.viewmodel.BaseViewModel
 
 abstract class BaseFragment<
         State : BaseState,
-        ViewModel: BaseViewModel<State>,
-        ViewBinding: ViewDataBinding>(private val layoutId: Int) : Fragment(),  View.OnTouchListener {
+        ViewModel : BaseViewModel<State>,
+        ViewBinding : ViewDataBinding>(private val layoutId: Int) : Fragment(),
+    View.OnTouchListener {
 
     protected val navController: NavController by lazy {
         findNavController()
     }
 
+    companion object {
+        const val TAG = "BaseFragment"
+    }
+
+
     abstract val viewModel: ViewModel
     protected lateinit var binding: ViewBinding
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,9 +50,11 @@ abstract class BaseFragment<
 
     protected abstract fun initView()
 
-    protected fun initViewModel() {
-        val disposable = viewModel.state.
-        subscribe(::updateView)
+    private fun initViewModel() {
+        val disposable = viewModel.state.subscribe(
+            { updateView(it) },
+            { tr -> Log.e(TAG, "Error while update view", tr) }
+        )
 
         viewLifecycleOwner.lifecycle.addObserver(LifecycleChecker(disposable))
     }

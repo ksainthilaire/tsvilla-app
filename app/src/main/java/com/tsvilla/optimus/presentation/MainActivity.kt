@@ -4,27 +4,19 @@ package com.tsvilla.optimus.presentation
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import android.view.MotionEvent
-import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.gms.wearable.*
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.databinding.ActivityMainBinding
-import com.tsvilla.optimus.utils.changeMode
-import com.tsvilla.optimus.utils.getCurrentMode
-
 
 class MainActivity : AppCompatActivity(),
     DataClient.OnDataChangedListener,
     MessageClient.OnMessageReceivedListener,
     CapabilityClient.OnCapabilityChangedListener {
-
-    private var isActionTypeUp: Boolean = true
-    private var touchStartPointY: Float = 0f
 
 
     private var activityContext: Context? = null
@@ -35,11 +27,12 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         activityContext = this
 
+
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         initView()
         setupNavigation()
     }
-
 
 
     private fun initView() {
@@ -50,6 +43,7 @@ class MainActivity : AppCompatActivity(),
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
     }
 
 
@@ -86,4 +80,5 @@ class MainActivity : AppCompatActivity(),
     override fun onMessageReceived(p0: MessageEvent) {
         TODO("Not yet implemented")
     }
+
 }
