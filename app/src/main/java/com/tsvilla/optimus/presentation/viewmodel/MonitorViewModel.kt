@@ -89,7 +89,7 @@ class MonitorViewModel : SensorEventListener, BaseViewModel<MonitorState>(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ _ ->
-                    val state = MonitorState(currentBPM = bpm)
+                    val state = MonitorState(currentBPM = bpm, isPaused = isPaused())
                     _state.onNext(state)
                 }, { tr -> Log.d(TAG, tr.toString()) })
         }
