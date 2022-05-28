@@ -1,16 +1,11 @@
 package com.tsvilla.optimus.presentation.fragment
 
 
-import android.graphics.Color
-import android.opengl.Visibility
-import android.view.View
-import android.view.View.GONE
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint

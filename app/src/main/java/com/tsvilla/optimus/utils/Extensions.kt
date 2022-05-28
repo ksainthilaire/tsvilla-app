@@ -2,6 +2,9 @@ package com.tsvilla.optimus.utils
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.os.Build
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate.*
 
 const val KEY_SHARED_PREFS: String = "KEY-SHARED-PREFS"
@@ -23,3 +26,25 @@ fun Context.setDarkMode(mode: Boolean) {
 
     setDefaultNightMode(if (mode) MODE_NIGHT_YES else MODE_NIGHT_NO)
 }
+/*
+fun Context.startFgService() {
+    Log.d("TAG", "startFgService()")
+    val intent = Intent(this, AppService::class.java)
+    intent.action = AppService.ACTION_START_FOREGROUND_SERVICE
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        startForegroundService(intent)
+    } else {
+        startService(intent)
+    }
+}
+
+fun Context.stopFgService() {
+    val intent = Intent(this, AppService::class.java)
+    intent.action = AppService.ACTION_STOP_FOREGROUND_SERVICE
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        startForegroundService(intent)
+    } else {
+        startService(intent)
+    }
+}
+ */

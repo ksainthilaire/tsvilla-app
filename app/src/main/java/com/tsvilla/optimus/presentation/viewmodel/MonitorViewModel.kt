@@ -92,6 +92,7 @@ class MonitorViewModel : SensorEventListener, BaseViewModel<MonitorState>(
                     val state = MonitorState(currentBPM = bpm, isPaused = isPaused())
                     _state.onNext(state)
                 }, { tr -> Log.d(TAG, tr.toString()) })
+            sendBpm()
         }
     }
 

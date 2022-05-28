@@ -34,15 +34,19 @@ class SettingsFragment :
                 value = true
             )*/
         )
+
         binding.settings.adapter = SettingsAdapter(settings) { position ->
             val setting = settings[position]
             when (setting.name) {
                 getString(R.string.settings_dark_mode) -> {
                     val mode = !setting.value
                     context?.setDarkMode(mode)
-                    findNavController().popBackStack()
                 }
             }
+        }
+
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.wear.ambient.AmbientModeSupport
 import com.google.android.gms.wearable.*
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.databinding.ActivityMainBinding
@@ -16,17 +17,36 @@ import com.tsvilla.optimus.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(),
     DataClient.OnDataChangedListener,
     MessageClient.OnMessageReceivedListener,
-    CapabilityClient.OnCapabilityChangedListener {
+    CapabilityClient.OnCapabilityChangedListener,
+    AmbientModeSupport.AmbientCallbackProvider {
 
 
     private var activityContext: Context? = null
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    private lateinit var ambientController: AmbientModeSupport.AmbientController
+
+
+    private class MyAmbientCallback : AmbientModeSupport.AmbientCallback() {
+
+        override fun onEnterAmbient(ambientDetails: Bundle?) {
+            // Handle entering ambient mode
+        }
+
+        override fun onExitAmbient() {
+            // Handle exiting ambient mode
+        }
+
+        override fun onUpdateAmbient() {
+            // Update the content
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityContext = this
-
+        ambientController = AmbientModeSupport.attach(this)
 
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -80,5 +100,7 @@ class MainActivity : AppCompatActivity(),
     override fun onMessageReceived(p0: MessageEvent) {
         TODO("Not yet implemented")
     }
+
+    override fun getAmbientCallback(): AmbientModeSupport.AmbientCallback = MyAmbientCallback()
 
 }
