@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">tsvilla</string>
+    <string name="app_name">TS Villa</string>
 
     <!--- API Configuration -->
     <string name="api_tsvilla_secret">ciaoTommaso</string>
     <string name="api_tsvilla_base_url">https://heartbeatserver-heartbeat1.pitunnel.com</string>
 
     <!-- Home fragment -->
-    <string name="home_title">PS Villa</string>
+    <string name="home_title">TS Villa</string>
     <string name="home_description">Stream your BPM live</string>
     <string name="home_button_start">Go live</string>
 

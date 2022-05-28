@@ -1,5 +1,6 @@
 package com.tsvilla.optimus.presentation.fragment
 
+import androidx.navigation.fragment.findNavController
 import com.tsvilla.optimus.R
 import com.tsvilla.optimus.databinding.FragmentSettingsBinding
 import com.tsvilla.optimus.domain.model.Setting
@@ -39,6 +40,7 @@ class SettingsFragment :
                 getString(R.string.settings_dark_mode) -> {
                     val mode = !setting.value
                     context?.setDarkMode(mode)
+                    findNavController().popBackStack()
                 }
             }
         }
