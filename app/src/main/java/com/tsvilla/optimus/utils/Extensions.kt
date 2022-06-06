@@ -3,8 +3,10 @@ package com.tsvilla.optimus.utils
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Build
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate.*
 
 const val KEY_SHARED_PREFS: String = "KEY-SHARED-PREFS"
@@ -26,6 +28,14 @@ fun Context.setDarkMode(mode: Boolean) {
 
     setDefaultNightMode(if (mode) MODE_NIGHT_YES else MODE_NIGHT_NO)
 }
+
+
+fun Context.verifyAvailableNetwork():Boolean{
+    val connectivityManager=(this as AppCompatActivity).getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val networkInfo=connectivityManager.activeNetworkInfo
+    return  networkInfo!=null && networkInfo.isConnected
+}
+
 /*
 fun Context.startFgService() {
     Log.d("TAG", "startFgService()")

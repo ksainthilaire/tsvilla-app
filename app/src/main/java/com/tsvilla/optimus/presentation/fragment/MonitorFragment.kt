@@ -14,6 +14,7 @@ import com.tsvilla.optimus.R
 import com.tsvilla.optimus.databinding.FragmentMonitorBinding
 import com.tsvilla.optimus.presentation.model.MonitorState
 import com.tsvilla.optimus.presentation.viewmodel.MonitorViewModel
+import com.tsvilla.optimus.utils.verifyAvailableNetwork
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MonitorFragment :
@@ -77,6 +78,14 @@ class MonitorFragment :
     }
 
     override fun updateView(state: MonitorState) {
+
+
+        if(!requireContext().verifyAvailableNetwork()) {
+            val bundle = HomeFragmentArgs(true).toBundle()
+            findNavController().navigate(R.id.nav_home, bundle)
+            return ;
+        }
+
         with(binding) {
             if (state.isPaused) {
                 heart.clearAnimation()
